@@ -15,6 +15,12 @@ import {
   Tr,
 } from '@chakra-ui/react';
 
+type Todo = {
+  name: string;
+};
+
+const todos: Todo[] = [{ name: '海外旅行' }, { name: '東京でデート' }];
+
 const Home: FC = () => {
   return (
     <>
@@ -31,12 +37,11 @@ const Home: FC = () => {
                 </Tr>
               </Thead>
               <Tbody>
-                <Tr>
-                  <Td>海外旅行</Td>
-                </Tr>
-                <Tr>
-                  <Td>東京でデート</Td>
-                </Tr>
+                {todos.map((todo) => (
+                  <Tr key={todo.name}>
+                    <Td>{todo.name}</Td>
+                  </Tr>
+                ))}
               </Tbody>
             </Table>
           </TableContainer>
