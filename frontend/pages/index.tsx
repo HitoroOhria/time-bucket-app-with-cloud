@@ -1,12 +1,28 @@
 import { FC } from 'react';
-import { Text } from '@chakra-ui/react';
+import { Heading, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr } from '@chakra-ui/react';
 
 const Home: FC = () => {
   return (
-    <div>
-      <h3>Hello!!</h3>
-      <Text fontSize={'xl'}>Chakra UI is working!</Text>
-    </div>
+    <>
+      <Heading>やりたいことリスト</Heading>
+      <TableContainer>
+        <Table variant={'simple'}>
+          <Thead>
+            <Tr>
+              <Th>やりたいこと</Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            <Tr>
+              <Td>海外旅行</Td>
+            </Tr>
+            <Tr>
+              <Td>東京でデート</Td>
+            </Tr>
+          </Tbody>
+        </Table>
+      </TableContainer>
+    </>
   );
 };
 
