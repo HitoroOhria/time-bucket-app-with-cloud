@@ -1,40 +1,46 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import {
   Box,
   Button,
   Card,
   CardBody,
   CardHeader,
-  Flex,
   Heading,
-  Spacer,
   Table,
   TableContainer,
   Tbody,
   Td,
-  Text,
   Th,
   Thead,
   Tr,
 } from '@chakra-ui/react';
+import Todo from './Todo';
+import TodoTableRow from './TodoTableRow';
 
-type Todo = {
-  name: string;
-};
-
-const todos: Todo[] = [{ name: '海外旅行' }, { name: '東京でデート' }];
+const initTodos: Todo[] = [new Todo({ name: '海外旅行' }), new Todo({ name: '個人開発で1000万' })];
 
 const Home: FC = () => {
+  // todos の要素は TodoTableRow の onChange では更新されないことに注意
+  // TodoTableRow の onSave で更新される
+  const [todos, setTodos] = useState<Todo[]>(initTodos);
+
+  const handleCreate = () => {
+    setTodos([...todos, Todo.newEmpty()]);
+  };
+
+  const handleSave = (index: number, todo: Todo) => {
+    setTodos([...todos].splice(index, 1, todo));
+  };
+
+  const handleDelete = (index: number) => {
+    setTodos([...todos].splice(index, 1));
+  };
+
   return (
     <>
       <Card m={'20px'}>
         <CardHeader>
-          <Flex>
-            <Heading size={'md'}>やりたいことリスト</Heading>
-            <Spacer />
-            {/* TODO テーブルの下に追加するボタンを配置する */}
-            <Button colorScheme={'blue'}>追加</Button>
-          </Flex>
+          <Heading size={'md'}>やりたいことリスト</Heading>
         </CardHeader>
         <CardBody>
           <TableContainer>
@@ -45,17 +51,23 @@ const Home: FC = () => {
                 </Tr>
               </Thead>
               <Tbody>
-                {todos.map((todo) => (
-                  <Tr key={todo.name}>
-                    <Td>{todo.name} </Td>
-                    <Td width={'10%'}>
-                      <Button colorScheme={'green'}>編集</Button>
-                    </Td>
-                    <Td width={'10%'}>
-                      <Button colorScheme={'red'}>削除</Button>
-                    </Td>
-                  </Tr>
+                {todos.map((todo, i) => (
+                  <TodoTableRow
+                    key={i}
+                    index={i}
+                    todo={todo}
+                    autoFocus={todo.isEmpty()}
+                    handleSave={handleSave}
+                    handleDelete={handleDelete}
+                  />
                 ))}
+                <Tr>
+                  <Td>
+                    <Button colorScheme={'blue'} variant={'outline'} onClick={handleCreate}>
+                      新しいやりたいことを追加
+                    </Button>
+                  </Td>
+                </Tr>
               </Tbody>
             </Table>
           </TableContainer>
