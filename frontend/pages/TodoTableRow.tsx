@@ -19,7 +19,11 @@ const TodoTableRow: FC<TodoTableRowProps> = (props) => {
   };
 
   const handleBlur = () => {
-    todo.isEmpty() && props.handleDelete(props.index);
+    if (todo.isEmpty()) {
+      return props.handleDelete(props.index);
+    }
+
+    props.handleSave(props.index, todo);
   };
 
   const handleSave = () => {

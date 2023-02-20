@@ -36,11 +36,17 @@ const Home: FC = () => {
   };
 
   const handleSave = (index: number, todo: Todo) => {
-    setTodos([...todos].splice(index, 1, todo));
+    const newTodos = [...todos];
+    newTodos.splice(index, 1, todo);
+
+    setTodos(newTodos);
   };
 
   const handleDelete = (index: number) => {
-    setTodos([...todos].splice(index, 1));
+    const newTodos = [...todos];
+    newTodos.splice(index, 1);
+
+    setTodos(newTodos);
   };
 
   return (
