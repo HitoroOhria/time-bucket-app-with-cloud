@@ -17,6 +17,7 @@ import {
 import Todo from './Todo';
 import TodoTableRow from './TodoTableRow';
 import { ulid } from 'ulid';
+import { AddIcon } from '@chakra-ui/icons';
 
 const initTodos: Todo[] = [
   new Todo({ id: ulid(), name: '海外旅行' }),
@@ -76,7 +77,12 @@ const Home: FC = () => {
                 ))}
                 <Tr>
                   <Td>
-                    <Button colorScheme={'blue'} variant={'outline'} onClick={handleCreate}>
+                    <Button
+                      colorScheme={'blue'}
+                      variant={'outline'}
+                      leftIcon={<AddIcon />}
+                      onClick={handleCreate}
+                    >
                       新しいやりたいことを追加
                     </Button>
                   </Td>
