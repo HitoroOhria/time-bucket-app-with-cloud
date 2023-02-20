@@ -1,6 +1,7 @@
 import Todo from './Todo';
 import { ChangeEvent, FC, useState } from 'react';
-import { Button, Input, Td, Tr } from '@chakra-ui/react';
+import { Button, IconButton, Input, Td, Tr } from '@chakra-ui/react';
+import { DeleteIcon } from '@chakra-ui/icons';
 
 type TodoTableRowProps = {
   index: number;
@@ -46,9 +47,12 @@ const TodoTableRow: FC<TodoTableRowProps> = (props) => {
         />
       </Td>
       <Td width={'10%'}>
-        <Button colorScheme={'red'} onClick={handleDelete}>
-          削除
-        </Button>
+        <IconButton
+          aria-label={'Delete todo'}
+          colorScheme={'red'}
+          icon={<DeleteIcon />}
+          onClick={handleDelete}
+        />
       </Td>
     </Tr>
   );
