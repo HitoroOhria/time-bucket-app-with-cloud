@@ -16,8 +16,15 @@ import {
 } from '@chakra-ui/react';
 import Todo from './Todo';
 import TodoTableRow from './TodoTableRow';
+import { ulid } from 'ulid';
 
-const initTodos: Todo[] = [new Todo({ name: '海外旅行' }), new Todo({ name: '個人開発で1000万' })];
+const initTodos: Todo[] = [
+  new Todo({ id: ulid(), name: '海外旅行' }),
+  new Todo({
+    id: ulid(),
+    name: '個人開発で1000万',
+  }),
+];
 
 const Home: FC = () => {
   // todos の要素は TodoTableRow の onChange では更新されないことに注意
@@ -53,7 +60,7 @@ const Home: FC = () => {
               <Tbody>
                 {todos.map((todo, i) => (
                   <TodoTableRow
-                    key={i}
+                    key={todo.id}
                     index={i}
                     todo={todo}
                     autoFocus={todo.isEmpty()}
