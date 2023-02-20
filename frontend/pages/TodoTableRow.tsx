@@ -46,11 +46,6 @@ const TodoTableRow: FC<TodoTableRowProps> = (props) => {
         />
       </Td>
       <Td width={'10%'}>
-        <Button colorScheme={'blue'} onClick={handleSave}>
-          保存
-        </Button>
-      </Td>
-      <Td width={'10%'}>
         <Button colorScheme={'red'} onClick={handleDelete}>
           削除
         </Button>
