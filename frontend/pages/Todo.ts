@@ -1,7 +1,6 @@
 import { ulid } from 'ulid';
 
 type NewTodoArgs = {
-  id: string;
   name: string;
 };
 
@@ -10,12 +9,12 @@ class Todo {
   public name: string;
 
   constructor(args: NewTodoArgs) {
-    this.id = args.id;
+    this.id = ulid();
     this.name = args.name;
   }
 
   static newEmpty(): Todo {
-    return new Todo({ id: ulid(), name: '' });
+    return new Todo({ name: '' });
   }
 
   public isEmpty(): boolean {

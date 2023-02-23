@@ -1,16 +1,9 @@
 import React, { FC } from 'react';
 import { Card, CardBody, CardHeader, Heading } from '@chakra-ui/react';
 import Todo from './Todo';
-import { ulid } from 'ulid';
 import TodoTable from './TodoTable';
 
-const initTodos: Todo[] = [
-  new Todo({ id: ulid(), name: '海外旅行' }),
-  new Todo({
-    id: ulid(),
-    name: '個人開発で1000万',
-  }),
-];
+const initTodos: Todo[] = [new Todo({ name: '海外旅行' }), new Todo({ name: '個人開発で1000万' })];
 
 const Home: FC = () => {
   return (
