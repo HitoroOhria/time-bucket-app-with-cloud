@@ -36,7 +36,7 @@ const TodoTableRow: FC<TodoTableRowProps> = (props) => {
   };
 
   return (
-    <Tr key={props.todo.name}>
+    <Tr key={props.todo.id}>
       <Td>
         <Input
           variant={'filled'}
