@@ -47,6 +47,11 @@ const TodoTableRow: FC<TodoTableRowProps> = (props) => {
         />
       </Td>
       <Td width={'10%'}>
+        <Button aria-label={'Move todo to bucket'} colorScheme={'gray'}>
+          20代のバケットへ移動
+        </Button>
+      </Td>
+      <Td width={'10%'}>
         <IconButton
           aria-label={'Delete todo'}
           colorScheme={'red'}
