@@ -9,6 +9,7 @@
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log",
+    "logs:dev": "open http://127.0.0.1:4001/logs?q=metadata.emulator.name%3D%22functions%22",
     "format": "prettier --loglevel=silent --write 'src/**/*.(js|ts)'"
   },
   "engines": {
