@@ -1,5 +1,6 @@
 import { Request } from 'firebase-functions';
-import { AddExampleUseCase } from '../../usecase/addExampleUseCase';
+import { initFirestore } from '../../infrastructure/firestore/firestore';
+import { injectAddExampleUseCase } from '../../injector/useCase';
 import { Handler } from '../util/handler';
 
 type AddExampleParams = {
@@ -9,7 +10,7 @@ type AddExampleParams = {
 export const AddExampleHandler: Handler = async (req, res) => {
   const params = getRequestParams(req);
 
-  const addExampleUseCase = new AddExampleUseCase();
+  const addExampleUseCase = injectAddExampleUseCase(initFirestore());
 
   const result = await addExampleUseCase.exec(params);
 
