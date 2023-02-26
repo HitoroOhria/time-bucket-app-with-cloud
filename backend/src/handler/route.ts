@@ -1,10 +1,13 @@
 import { initializeApp } from 'firebase-admin/app';
+import { getFirestore } from 'firebase-admin/firestore';
 import { onCreateExampleHandler } from './firestore/onCreateExampleHandler';
 import { AddExampleHandler } from './http/addExampleHandler';
 import { helloWorldHandler } from './http/helloWorldHandler';
 import functions = require('firebase-functions');
 
 initializeApp();
+
+const db = getFirestore();
 
 export const helloWorld = functions.https.onRequest(helloWorldHandler);
 
