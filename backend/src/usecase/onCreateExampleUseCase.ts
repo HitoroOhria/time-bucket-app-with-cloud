@@ -1,4 +1,4 @@
-import functions = require('firebase-functions');
+import { log } from 'firebase-functions/logger';
 import { WriteResult } from 'firebase-admin/lib/firestore';
 import { EventContext } from 'firebase-functions/lib/v1/cloud-functions';
 import { QueryDocumentSnapshot } from 'firebase-functions/lib/v1/providers/firestore';
@@ -14,7 +14,7 @@ export class OnCreateExampleUseCase {
     const text = args.snapshot.data().text;
     const uppercase = text.toUpperCase();
 
-    functions.logger.log('Uppercasing', args.context.params.documentId, text);
+    log('Uppercasing', args.context.params.documentId, text);
 
     return args.snapshot.ref.set({ uppercase }, { merge: true });
   }
