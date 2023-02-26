@@ -8,7 +8,7 @@ import functions = require('firebase-functions');
 
 initializeApp();
 
-exports.addMessage = functions.https.onRequest(
+export const addMessage = functions.https.onRequest(
   async (req: Request, res: Response): Promise<void> => {
     const original = req.query.text;
 
@@ -18,7 +18,7 @@ exports.addMessage = functions.https.onRequest(
   }
 );
 
-exports.makeUppercase = functions.firestore
+export const makeUppercase = functions.firestore
   .document('/messages/{documentId}')
   .onCreate((snap: QueryDocumentSnapshot, context: EventContext): Promise<WriteResult> => {
     const original = snap.data().original;
