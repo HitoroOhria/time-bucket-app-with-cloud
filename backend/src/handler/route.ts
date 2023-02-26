@@ -16,15 +16,3 @@ export const addExample = functions.https.onRequest(AddExampleHandler);
 export const onCreateExample = functions.firestore
   .document('/example/{documentId}')
   .onCreate(onCreateExampleHandler);
-
-const sample = functions.firestore
-  .document('/messages/{documentId}')
-  .onCreate((snap: QueryDocumentSnapshot, context: EventContext): Promise<WriteResult> => {
-    const original = snap.data().original;
-
-    functions.logger.log('Uppercasing', context.params.documentId, original);
-
-    const uppercase = original.toUpperCase();
-
-    return snap.ref.set({ uppercase }, { merge: true });
-  });
