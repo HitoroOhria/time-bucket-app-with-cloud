@@ -8,13 +8,11 @@ import { getFirestore } from 'firebase-admin/firestore';
 import { ExampleModel } from '../model/ExampleModel';
 
 export const initFirestore = (): Firestore => {
-  const isEmulator = process.env.FIRESTORE_EMULATOR_HOST !== undefined;
-  console.log('isEmulator', isEmulator);
-
-  if (isEmulator) {
-    process.env.FIRESTORE_EMULATOR_HOST = 'localhost:8081';
-  }
-
+  /**
+   * firebase emulators:start すれば自動的にエミュレーターを参照する
+   * process.env.FIRESTORE_EMULATOR_HOST がフックであり、上記コマンドで自動的に設定される
+   * @see https://cloud.google.com/firestore/docs/emulator?hl=ja#server_client_libraries
+   */
   return getFirestore();
 };
 
