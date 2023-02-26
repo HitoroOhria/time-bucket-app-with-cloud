@@ -1,6 +1,6 @@
 import { Request } from 'firebase-functions';
-import { Handler } from '../util/handler';
 import { AddExampleUseCase } from '../../usecase/addExampleUseCase';
+import { Handler } from '../util/handler';
 
 type AddExampleParams = {
   text: string;
