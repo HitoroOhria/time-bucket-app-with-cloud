@@ -4,6 +4,7 @@
     "lint": "eslint --ext .js,.ts .",
     "build": "tsc",
     "build:watch": "tsc --watch",
+    "exportEnv": "echo 'TODO fix credentials loading' && export GOOGLE_APPLICATION_CREDENTIALS=\"$(pwd)/time-bucket-app-a419e-firebase-adminsdk-ljr4b-30ce5b47cf.json\"",
     "serve": "npm run build && firebase emulators:start --only functions",
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
