@@ -1,9 +1,10 @@
 import { CollectionReference, Firestore } from '@google-cloud/firestore';
 import { Example } from '../../domain/entity/Example';
+import { ExampleRepositoryInterface } from '../../domain/repository/ExampleRepositoryInterface';
 import { collections } from '../firestore/firestore';
 import { exampleEntityToModel, ExampleModel } from '../model/ExampleModel';
 
-export class ExampleRepository {
+export class ExampleRepository implements ExampleRepositoryInterface {
   private readonly collection: CollectionReference<ExampleModel>;
 
   constructor(db: Firestore) {
