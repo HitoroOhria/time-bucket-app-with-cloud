@@ -8,6 +8,16 @@ import functions = require('firebase-functions');
 initializeApp();
 
 const db = getFirestore();
+// connectFirestoreEmulator(db, 'localhost', 8080);
+process.env.FIRESTORE_EMULATOR_HOST = 'localhost:8080';
+
+export const addUser = functions.https.onRequest(async (): Promise<any> => {
+  const docRef = db.collection('example').doc('test');
+
+  return docRef.set({
+    first: 'Ada',
+  });
+});
 
 export const helloWorld = functions.https.onRequest(helloWorldHandler);
 
