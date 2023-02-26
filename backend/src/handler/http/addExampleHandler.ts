@@ -1,13 +1,13 @@
 import { Request } from 'firebase-functions';
 import { initFirestore } from '../../infrastructure/firestore/firestore';
 import { injectAddExampleUseCase } from '../../injector/useCase';
-import { Handler } from '../util/handler';
+import { HTTPHanlder } from '../util/hanlder';
 
 type AddExampleParams = {
   text: string;
 };
 
-export const AddExampleHandler: Handler = async (req, res) => {
+export const AddExampleHandler: HTTPHanlder = async (req, res) => {
   const params = getRequestParams(req);
 
   const addExampleUseCase = injectAddExampleUseCase(initFirestore());

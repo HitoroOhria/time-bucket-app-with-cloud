@@ -1,15 +1,14 @@
 import { initializeApp } from 'firebase-admin/app';
+import { document } from 'firebase-functions/v1/firestore';
+import { onRequest } from 'firebase-functions/v1/https';
 import { onCreateExampleHandler } from './firestore/onCreateExampleHandler';
 import { AddExampleHandler } from './http/addExampleHandler';
 import { helloWorldHandler } from './http/helloWorldHandler';
-import functions = require('firebase-functions');
 
 initializeApp();
 
-export const helloWorld = functions.https.onRequest(helloWorldHandler);
+export const helloWorld = onRequest(helloWorldHandler);
 
-export const addExample = functions.https.onRequest(AddExampleHandler);
+export const addExample = onRequest(AddExampleHandler);
 
-export const onCreateExample = functions.firestore
-  .document('/example/{documentId}')
-  .onCreate(onCreateExampleHandler);
+export const onCreateExample = document('/example/{documentId}').onCreate(onCreateExampleHandler);

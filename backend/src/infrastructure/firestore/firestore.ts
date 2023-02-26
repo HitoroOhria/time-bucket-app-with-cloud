@@ -20,7 +20,7 @@ export const initFirestore = (): Firestore => {
 
 const converter = <T extends DocumentData>(): FirestoreDataConverter<T> => ({
   toFirestore: (data: T): DocumentData => data,
-  fromFirestore: (snap: QueryDocumentSnapshot): T => snap.data() as T,
+  fromFirestore: (snap: QueryDocumentSnapshot<T>): T => snap.data(),
 });
 
 export const collections = (db: Firestore) => ({
