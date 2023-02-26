@@ -5,8 +5,11 @@ import { QueryDocumentSnapshot } from 'firebase-functions/lib/v1/providers/fires
 import { initializeApp } from 'firebase-admin/app';
 import { firestore } from 'firebase-admin';
 import functions = require('firebase-functions');
+import { helloWorldHandler } from './handler/helloWorldHandler';
 
 initializeApp();
+
+export const helloWorld = functions.https.onRequest(helloWorldHandler);
 
 export const addMessage = functions.https.onRequest(
   async (req: Request, res: Response): Promise<void> => {
