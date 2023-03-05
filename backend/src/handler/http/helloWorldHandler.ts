@@ -1,5 +1,5 @@
-import { HTTPHanlder } from '../util/hanlder';
+import { HTTPHandler } from '../util/hanlder';
 
-export const helloWorldHandler: HTTPHanlder = (req, res) => {
+export const helloWorldHandler: HTTPHandler = (req, res) => {
   res.json({ result: 'Hello World' });
 };

@@ -1,7 +1,7 @@
-import { log } from 'firebase-functions/logger';
 import { WriteResult } from 'firebase-admin/lib/firestore';
 import { EventContext } from 'firebase-functions/lib/v1/cloud-functions';
 import { QueryDocumentSnapshot } from 'firebase-functions/lib/v1/providers/firestore';
+import { log } from 'firebase-functions/logger';
 
 type OnCreateExampleArgs = {
   snapshot: QueryDocumentSnapshot;
