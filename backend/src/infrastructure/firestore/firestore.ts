@@ -6,6 +6,7 @@ import {
 } from '@google-cloud/firestore';
 import { getFirestore } from 'firebase-admin/firestore';
 import { ExampleModel } from '../model/ExampleModel';
+import { TodoModel } from '../model/TodoModel';
 
 export const initFirestore = (): Firestore => {
   /**
@@ -23,4 +24,5 @@ const converter = <T extends DocumentData>(): FirestoreDataConverter<T> => ({
 
 export const collections = (db: Firestore) => ({
   example: db.collection('example').withConverter(converter<ExampleModel>()),
+  todo: db.collection('todos').withConverter(converter<TodoModel>()),
 });
