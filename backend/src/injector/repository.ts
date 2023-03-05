@@ -4,7 +4,7 @@ import { TodoRepositoryInterface } from '../domain/repository/TodoRepositoryInte
 import { ExampleRepository } from '../infrastructure/repository/ExampleRepository';
 import { TodoRepository } from '../infrastructure/repository/TodoRepository';
 
-export const injectAddExampleRepository = (db: Firestore): ExampleRepositoryInterface => {
+export const injectExampleRepository = (db: Firestore): ExampleRepositoryInterface => {
   return new ExampleRepository(db);
 };
 

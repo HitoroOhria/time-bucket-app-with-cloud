@@ -11,7 +11,7 @@ export class ExampleRepository implements ExampleRepositoryInterface {
     this.collection = collections(db).example;
   }
 
-  async addExample(example: Example): Promise<string> {
+  async createExample(example: Example): Promise<string> {
     const exampleModel = exampleEntityToModel(example);
 
     const snapshot = await this.collection.add(exampleModel);

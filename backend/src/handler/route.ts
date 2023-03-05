@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase-admin/app';
 import { onCreateExampleHandler } from './firestore/onCreateExampleHandler';
-import { AddExampleHandler } from './http/addExampleHandler';
+import { createExampleHandler } from './http/createExampleHandler';
 import { CreateTodoHandler } from './http/createTodoHnadler';
 import { helloWorldHandler } from './http/helloWorldHandler';
 import { onCreate, onGet, onPost } from './util/request';
@@ -11,7 +11,7 @@ initializeApp();
 
 export const helloWorld = onGet(helloWorldHandler);
 
-export const addExample = onPost(AddExampleHandler);
+export const createExample = onPost(createExampleHandler);
 
 export const onCreateExample = onCreate('/example/{documentId}', onCreateExampleHandler);
 

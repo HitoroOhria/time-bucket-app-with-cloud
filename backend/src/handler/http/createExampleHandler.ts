@@ -1,18 +1,18 @@
 import { Request } from 'firebase-functions';
 import { initFirestore } from '../../infrastructure/firestore/firestore';
-import { injectAddExampleUseCase } from '../../injector/useCase';
+import { injectCreateExampleUseCase } from '../../injector/useCase';
 import { HTTPHandler } from '../util/hanlder';
 
 type AddExampleParams = {
   text: string;
 };
 
-export const AddExampleHandler: HTTPHandler = async (req, res) => {
+export const createExampleHandler: HTTPHandler = async (req, res) => {
   const params = getRequestParams(req);
 
-  const addExampleUseCase = injectAddExampleUseCase(initFirestore());
+  const createExampleUseCase = injectCreateExampleUseCase(initFirestore());
 
-  const result = await addExampleUseCase.exec(params);
+  const result = await createExampleUseCase.exec(params);
 
   res.json({ result: `Message with ID: ${result.documentId} added.` });
 };

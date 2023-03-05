@@ -1,11 +1,11 @@
 import { Firestore } from '@google-cloud/firestore';
-import { AddExampleUseCase } from '../usecase/addExampleUseCase';
+import { CreateExampleUseCase } from '../usecase/createExampleUseCase';
 import { CreateTodoUseCase } from '../usecase/createTodoUseCase';
-import { injectAddExampleRepository, injectTodoRepository } from './repository';
+import { injectExampleRepository, injectTodoRepository } from './repository';
 
-export const injectAddExampleUseCase = (db: Firestore): AddExampleUseCase => {
-  return new AddExampleUseCase({
-    exampleRepository: injectAddExampleRepository(db),
+export const injectCreateExampleUseCase = (db: Firestore): CreateExampleUseCase => {
+  return new CreateExampleUseCase({
+    exampleRepository: injectExampleRepository(db),
   });
 };
 

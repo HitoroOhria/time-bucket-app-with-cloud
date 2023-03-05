@@ -13,7 +13,7 @@ type AddExampleResult = {
   documentId: string;
 };
 
-export class AddExampleUseCase {
+export class CreateExampleUseCase {
   private readonly exampleRepository: ExampleRepositoryInterface;
 
   constructor(deps: AddExampleUseCaseDeps) {
@@ -25,7 +25,7 @@ export class AddExampleUseCase {
       text: args.text,
     });
 
-    const documentId = await this.exampleRepository.addExample(example);
+    const documentId = await this.exampleRepository.createExample(example);
 
     return {
       documentId,
