@@ -71,6 +71,3 @@ dist/**/*.js.map
 
 # TypeScript v1 declaration files
 typings/
-
-# Firebse sevice account
-time-bucket-app-a419e-firebase-adminsdk-ljr4b-30ce5b47cf.json
