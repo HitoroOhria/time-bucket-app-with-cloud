@@ -29,3 +29,7 @@ functions http function initialized (http://127.0.0.1:5001/time-bucket-app-a419e
 ```shell
 $ npm run deploy
 ```
+
+# Production Env
+
+- Firebase Project: Time-Bucket-App
