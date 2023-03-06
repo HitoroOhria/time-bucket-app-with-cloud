@@ -17,6 +17,4 @@ export const onCreateExample = onCreate('/example/{documentId}', onCreateExample
 
 // ----- Todo -----
 
-// @ts-ignore
-// Type 'ParamsDictionary' is missing the following properties from type 'CreateTodoParams': id, text
 export const createTodo = onPost(CreateTodoHandler);
