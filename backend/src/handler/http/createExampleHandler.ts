@@ -1,29 +1,22 @@
-import { Request } from 'firebase-functions';
 import { initFirestore } from '../../infrastructure/firestore/firestore';
 import { injectCreateExampleUseCase } from '../../injector/useCase';
-import { HTTPHandler } from '../util/hanlder';
+import { HTTPHandler } from '../type/hanlder';
+import { getParamFromBody } from '../util/parameter';
+import { responseJson } from '../util/response';
 
 type AddExampleParams = {
   text: string;
 };
 
-export const createExampleHandler: HTTPHandler = async (req, res) => {
-  const params = getRequestParams(req);
-
-  const createExampleUseCase = injectCreateExampleUseCase(initFirestore());
-
-  const result = await createExampleUseCase.exec(params);
-
-  res.json({ result: `Message with ID: ${result.documentId} added.` });
+type AddExampleResp = {
+  result: string;
 };
 
-const getRequestParams = (req: Request): AddExampleParams => {
-  const text = req.query.text;
-  if (text === undefined) {
-    throw new Error('text param is undefined');
-  }
+export const createExampleHandler: HTTPHandler<AddExampleResp> = async (req, res) => {
+  const params = getParamFromBody<AddExampleParams>(req);
 
-  return {
-    text: text.toString(),
-  };
+  const createExampleUseCase = injectCreateExampleUseCase(initFirestore());
+  const result = await createExampleUseCase.exec(params);
+
+  responseJson(res, `Message with ID: ${result.documentId} added.`);
 };

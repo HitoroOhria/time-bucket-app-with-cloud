@@ -2,13 +2,13 @@ import { CollectionReference, Firestore } from '@google-cloud/firestore';
 import { Todo } from '../../domain/entity/Todo';
 import { TodoRepositoryInterface } from '../../domain/repository/TodoRepositoryInterface';
 import { collections } from '../firestore/firestore';
+import { getModelsWithId, getModelWithId } from '../model/id';
 import {
   todoEntityToModel,
   TodoModel,
   todoModelsToEntities,
   todoModelToEntity,
 } from '../model/TodoModel';
-import { getModelWithId, getModelsWithId } from '../model/id';
 
 export class TodoRepository implements TodoRepositoryInterface {
   private readonly collection: CollectionReference<TodoModel>;

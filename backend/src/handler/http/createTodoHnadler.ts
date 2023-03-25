@@ -1,7 +1,8 @@
-import { Request } from 'firebase-functions';
 import { initFirestore } from '../../infrastructure/firestore/firestore';
 import { injectCreateTodoUseCase } from '../../injector/useCase';
-import { HTTPHandler } from '../util/hanlder';
+import { HTTPHandler } from '../type/hanlder';
+import { getParamFromBody } from '../util/parameter';
+import { responseJson } from '../util/response';
 
 export type CreateTodoParams = {
   id: string;
@@ -12,22 +13,11 @@ export type CreateTodoResp = {
   result: string;
 };
 
-export const CreateTodoHandler: HTTPHandler<CreateTodoParams, CreateTodoResp> = async (
-  req,
-  res
-) => {
-  const params = getRequestParams(req);
+export const CreateTodoHandler: HTTPHandler<CreateTodoResp> = async (req, res) => {
+  const params = getParamFromBody<CreateTodoParams>(req);
 
   const createTodoUseCase = injectCreateTodoUseCase(initFirestore());
-
   await createTodoUseCase.exec(params);
 
-  res.json({ result: 'Todo created.' });
-};
-
-const getRequestParams = (req: Request<CreateTodoParams>): CreateTodoParams => {
-  return {
-    id: req.body.id,
-    text: req.body.text,
-  };
+  responseJson(res, 'Todo Created.');
 };

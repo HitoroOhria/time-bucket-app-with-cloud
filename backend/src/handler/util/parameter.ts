@@ -1,14 +1,18 @@
+import { Params } from 'express-serve-static-core';
 import { Request } from 'firebase-functions';
 
-type BaseResp = {
-  result: string;
-};
-
-export const getParamFromBody = (req: Request, paramName: string): string => {
-  const value = req.body[paramName];
-  if (value === undefined) {
-    throw new Error(`${paramName} param is undefined`);
-  }
-
-  return value.toString();
+export const getParamFromBody = <P extends Params>(req: Request): P => {
+  /**
+   * 本来は以下のようにしたい
+   *
+   * const getParam <P = {id: string}>(req: Request): P => {
+   *   const id = req.body.id
+   *   if ( === undefined) {
+   *     throw new Error('id param is undefined');
+   *   }
+   *
+   *   return { id }
+   * }
+   */
+  return req.body;
 };

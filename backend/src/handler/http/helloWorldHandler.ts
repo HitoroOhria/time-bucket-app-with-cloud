@@ -1,5 +1,10 @@
-import { HTTPHandler } from '../util/hanlder';
+import { HTTPHandler } from '../type/hanlder';
+import { responseJson } from '../util/response';
 
-export const helloWorldHandler: HTTPHandler = (req, res) => {
-  res.json({ result: 'Hello World' });
+export type HelloWorldResp = {
+  result: string;
+};
+
+export const helloWorldHandler: HTTPHandler<HelloWorldResp> = (req, res) => {
+  responseJson(res, 'Hello World');
 };

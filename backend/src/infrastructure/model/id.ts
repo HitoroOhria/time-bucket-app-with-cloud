@@ -1,4 +1,4 @@
-import { DocumentSnapshot, QueryDocumentSnapshot, QuerySnapshot } from '@google-cloud/firestore';
+import { DocumentSnapshot, QuerySnapshot } from '@google-cloud/firestore';
 
 export type WithId<T> = { id: string } & T;
 
