@@ -13,7 +13,7 @@ export type CreateTodoResp = {
   result: string;
 };
 
-export const CreateTodoHandler: HTTPHandler<CreateTodoResp> = async (req, res) => {
+export const createTodoHandler: HTTPHandler<CreateTodoResp> = async (req, res) => {
   const params = getParamFromBody<CreateTodoParams>(req);
 
   const createTodoUseCase = injectCreateTodoUseCase(initFirestore());

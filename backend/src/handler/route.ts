@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase-admin/app';
 import { onCreateExampleHandler } from './firestore/onCreateExampleHandler';
 import { createExampleHandler } from './http/createExampleHandler';
-import { CreateTodoHandler } from './http/createTodoHnadler';
+import { createTodoHandler } from './http/createTodoHnadler';
 import { helloWorldHandler } from './http/helloWorldHandler';
 import { onCreate, onGet, onPost } from './util/request';
 
@@ -17,4 +17,4 @@ export const onCreateExample = onCreate('/example/{documentId}', onCreateExample
 
 // ----- Todo -----
 
-export const createTodo = onPost(CreateTodoHandler);
+export const createTodo = onPost(createTodoHandler);
