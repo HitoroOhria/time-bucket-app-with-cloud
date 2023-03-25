@@ -3,7 +3,10 @@ version: "3.9"
 services:
   # not working
   # - cannot connect to firestore in container (so, cannot test repository)
+  #   - Error: Test timed out in 5000ms.
   # - cannot browse firestore emulator ui (so, cannot check date in local)
+  #   - POST http://127.0.0.1:8080/v1/projects/time-bucket-app-a419e/databases/(default)/documents:listCollectionIds net::ERR_CONNECTION_REFUSED
+  #   - WebSocket connection to 'ws://127.0.0.1:9150/requests' failed: WebSocket is closed before the connection is established.
   firebase:
     container_name: tba-c-firebase
     build:
