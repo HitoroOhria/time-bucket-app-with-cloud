@@ -1,6 +1,9 @@
 version: "3.9"
 
 services:
+  # not working
+  # - cannot connect to firestore in container (so, cannot test repository)
+  # - cannot browse firestore emulator ui (so, cannot check date in local)
   firebase:
     container_name: tba-c-firebase
     build:
@@ -11,6 +14,8 @@ services:
       - backend_node_modules:/backend/node_modules
     ports:
       - "4000:4000"
+      - "5001:5000"
+      - "9150:9150"
     working_dir: /backend
     tty: true
 

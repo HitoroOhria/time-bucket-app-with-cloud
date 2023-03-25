@@ -9,7 +9,8 @@
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log",
     "format": "prettier --loglevel=silent --write 'src/**/*.(js|ts)'",
-    "test": "vitest"
+    "test": "vitest",
+    "login-in-container": "firebase login --no-localhost"
   },
   "engines": {
     "node": "18"
