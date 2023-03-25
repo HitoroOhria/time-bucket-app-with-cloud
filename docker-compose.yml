@@ -8,7 +8,11 @@ services:
       dockerfile: ./docker/firebase.local.dockerfile
     volumes:
       - ./backend:/backend
+      - backend_node_modules:/backend/node_modules
     ports:
       - "4000:4000"
     working_dir: /backend
     tty: true
+
+volumes:
+  backend_node_modules:

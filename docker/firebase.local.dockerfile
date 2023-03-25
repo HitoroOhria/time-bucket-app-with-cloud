@@ -9,4 +9,4 @@ RUN npm i -g firebase-tools
 
 WORKDIR /backend
 
-CMD ["npm", "run", "serve"]
+CMD ["sh", "-c", "npm install && npm run serve"]
