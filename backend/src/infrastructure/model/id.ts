@@ -16,8 +16,6 @@ export const getModelWithId = <T>(snap: DocumentSnapshot<T>): WithId<T> | undefi
 
 export const getModelsWithId = <T>(snap: QuerySnapshot<T>): WithId<T>[] => {
   return snap.docs
-    .map((doc) => {
-      return getModelWithId<T>(doc);
-    })
+    .map((doc) => getModelWithId<T>(doc))
     .filter((model): model is WithId<T> => model !== undefined);
 };
