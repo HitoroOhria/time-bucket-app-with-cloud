@@ -1,6 +1,14 @@
 import { Firestore, Query } from '@google-cloud/firestore';
+import { initFirestore } from '../../infrastructure/firestore/firestore';
+import { initializeApp } from 'firebase-admin/app';
+
+initializeApp();
 
 const deleteLimitSize = 100;
+
+export const initTestFirestore = (): Firestore => {
+  return initFirestore(true);
+};
 
 // @see https://firebase.google.com/docs/firestore/manage-data/delete-data?hl=ja#node.js_2
 export const deleteCollection = async (db: Firestore, collectionPath: string) => {

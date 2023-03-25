@@ -7,13 +7,19 @@ import {
 import { getFirestore } from 'firebase-admin/firestore';
 import { ExampleModel } from '../model/ExampleModel';
 import { TodoModel } from '../model/TodoModel';
+import * as process from 'process';
 
-export const initFirestore = (): Firestore => {
+export const initFirestore = (useEmulator: boolean = false): Firestore => {
   /**
-   * firebase emulators:start すれば自動的にエミュレーターを参照する
+   * ローカルでサーバーを立てる場合は firebase emulators:start すれば自動的にエミュレーターを参照する
    * process.env.FIRESTORE_EMULATOR_HOST がフックであり、上記コマンドで自動的に設定される
    * @see https://cloud.google.com/firestore/docs/emulator?hl=ja#server_client_libraries
    */
+  if (useEmulator) {
+    process.env.FIRESTORE_EMULATOR_HOST = 'localhost:8080';
+    process.env.FIRESTORE_PROJECT_ID = 'test-project';
+  }
+
   return getFirestore();
 };
 

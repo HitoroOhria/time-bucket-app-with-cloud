@@ -1,11 +1,11 @@
 import { beforeEach } from 'vitest';
 import { Todo } from '../../domain/entity/Todo';
-import { deleteCollection } from '../../test/util/firestore';
+import { deleteCollection, initTestFirestore } from '../../test/util/firestore';
 import { collections, initFirestore } from '../firestore/firestore';
 import { TodoRepository } from './TodoRepository';
 
 describe('TodoRepository', () => {
-  const db = initFirestore();
+  const db = initTestFirestore();
   const todoRepository = new TodoRepository(db);
 
   beforeEach(async () => {
@@ -25,8 +25,8 @@ describe('TodoRepository', () => {
       const data = snap.data();
 
       expect(data).not.toBeUndefined();
+      expect(snap.id).toBe('1');
       expect(data).toStrictEqual({
-        id: '1',
         text: 'go oversea travel',
       });
     });
