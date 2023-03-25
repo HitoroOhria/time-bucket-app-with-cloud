@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  firebase:
+    container_name: tba-c-firebase
+    build:
+      context: .
+      dockerfile: ./docker/firebase.local.dockerfile
+    volumes:
+      - ./backend:/backend
+    ports:
+      - "4000:4000"
+    working_dir: /backend
+    tty: true

@@ -15,15 +15,38 @@
       ]
     }
   ],
+  "[comment] information of host setting below": {
+    "emulator on docker": "see https://stackoverflow.com/questions/74039895/cannot-get-firebase-emulators-running"
+  },
   "emulators": {
+    "auth": {
+      "port": 9099,
+      "host": "0.0.0.0"
+    },
     "functions": {
-      "port": 5001
+      "host": "0.0.0.0",
+      "port": 5000
     },
     "firestore": {
-      "port": 8081
+      "host": "0.0.0.0",
+      "port": 8080
+    },
+    "hub": {
+      "host": "0.0.0.0",
+      "port": 4400
+    },
+    "logging": {
+      "host": "0.0.0.0",
+      "port": 4500
+    },
+    "eventarc": {
+      "host": "0.0.0.0",
+      "port": 9299
     },
     "ui": {
-      "enabled": true
+      "enabled": true,
+      "host": "0.0.0.0",
+      "port": 4000
     },
     "singleProjectMode": true
   }
