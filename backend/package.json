@@ -8,7 +8,8 @@
     "shell": "npm run build && firebase functions:shell",
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log",
-    "format": "prettier --loglevel=silent --write 'src/**/*.(js|ts)'"
+    "format": "prettier --loglevel=silent --write 'src/**/*.(js|ts)'",
+    "test": "vitest"
   },
   "engines": {
     "node": "18"
